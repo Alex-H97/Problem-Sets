@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div cass="col">
+
+        <!-- Create form -->
+        <form action="\score" enctype="multipart/form-data" method="post">
+
+            <!-- Obtain Strings -->
+            <div class="form-group">
+
+                <!-- First string -->
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">
+                    <span class="input-group-text">String</span>
+                  </div>
+                  <input name="string1" type="text" class="form-control">
+                </div>
+
+                <!-- Second string -->
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">
+                    <span class="input-group-text">String</span>
+                  </div>
+                  <input name="string2" type="text" class="form-control">
+                </div>
+
+            </div>
+
+            <!-- Sumbit form button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-dark btn-lg">Score</button>
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}

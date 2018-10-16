@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="col">
+        <form action="/compare" enctype="multipart/form-data" method="post">
+
+            <!-- Load in files -->
+            <div class="form-group">
+                <legend> Files </legend>
+                <div class="row">
+
+                    <!-- File 1 -->
+                    <div class="col-sm-3">
+                        <label class="form-text text-muted">File 1</label>
+                        <input name="file1" type="file" class="form-control-file">
+                    </div>
+
+                    <!-- File 2 -->
+                    <div class="col-sm-3">
+                        <label class="form-text text-muted">File 2</label>
+                        <input name="file2" type="file" class="form-control-file">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Select comparison algorithm -->
+            <div class="form-group">
+                <legend>Algorithm</legend>
+                <div class="row">
+
+                    <!-- Radio Buttons for Algorithms -->
+                    <div class="col-sm-3">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                            <label class="btn btn-secondary">
+                                <input name="algorithm" type="radio" value="lines"/> Lines
+                            </label>
+
+                            <label class="btn btn-secondary">
+                                <input name="algorithm" type="radio" value="sentences"/> Sentences
+                            </label>
+
+                            <label class="btn btn-secondary">
+                                <input name="algorithm" type="radio" value="substrings"/> Substrings
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- Number entry for Substrings algorithm -->
+                    <div class="col-sm-3">
+                        <input name="length" type="number" class="form-control" placeholder="Substring Length"/>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Sumbit form button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-dark btn-lg">Compare</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

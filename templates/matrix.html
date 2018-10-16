@@ -1,0 +1,61 @@
+<!-- Create table -->
+<table class="table table-hover table-striped">
+
+    <!-- Create body of table -->
+    <tbody>
+
+        <!-- Create table header row -->
+        <tr>
+
+            <!-- First header is diagonal arrow -->
+            <th scope="col">↘</th>
+
+            <!-- Second header is right arrow -->
+            <th scope="col">→</th>
+
+            <!-- Iterate over letters in second string -->
+            {% for letter in s2 %}
+
+                <!-- Insert letter of second string as a header -->
+                <th scope="col">{{ letter }}</th>
+
+            {% endfor %}
+        </tr>
+
+        <!-- Iterate over each row in the matrix -->
+        {% for row in matrix %}
+
+            <!-- Create a row for the table -->
+            <tr>
+
+                <!-- Create first cell of row -->
+                <th scope="row">
+                    <!-- If not first row of matrix -->
+                    {% if loop.index == 1 %}
+
+                        ↓ <!-- Insert down arrow for first row -->
+
+                    {% else %}
+
+                        <!-- Insert letter of first string -->
+                        {{ s1[loop.index - 2] }}
+
+                    {% endif %}
+                </th>
+
+                <!-- Iterate over each cell in matrix's row -->
+                {% for cell in row %}
+
+                    <!-- Create a cell in the row of the table -->
+                    <td>
+
+                        <!-- Insert the first content of the matrix's cell (the cost) -->
+                        {{ cell[0] }}
+                    </td>
+                {% endfor %}
+
+            </tr>
+        {% endfor %}
+
+    </tbody>
+</table>

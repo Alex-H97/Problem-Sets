@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<!-- Create table -->
+<table class="table table-hover table-striped">
+
+    <!-- Create body of table -->
+    <tbody>
+
+        {% if transactions %}
+            <!-- Create table header row -->
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Original Price</th>
+                <th scope="col">Date Time (UTC)</th>
+            </tr>
+
+            <!-- Iterate over all companies -->
+            {% for transaction in transactions %}
+                <tr>
+                    <!-- Insert letter of second string as a header -->
+                    <th scope="col">{{ transaction['name'] }}</th>
+                    <td scope="col">{{ transaction['symbol'] }}</td>
+                    <td scope="col">{{ transaction['bought'] }}</td>
+                    <td scope="col">{{ transaction['shares'] }}</td>
+                    <td scope="col">{{ transaction['price'] | usd }}</td>
+                    <td scope="col">{{ transaction['datetime'] }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <th scope="col"> History is Empty </th>
+        {% endif %}
+
+    </tbody>
+</table>
+
+{% endblock %}

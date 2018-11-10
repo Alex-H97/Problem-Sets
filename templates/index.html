@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+
+<!-- Create table -->
+<table class="table table-hover table-striped">
+
+    <!-- Create body of table -->
+    <tbody>
+
+        {% if companies %}
+            <!-- Create table header row -->
+            <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Current Holding</th>
+            </tr>
+
+            <!-- Iterate over all companies -->
+            {% for company in companies %}
+                <tr>
+                    <!-- Insert letter of second string as a header -->
+                    <th scope="col">{{ company['name'] }}</th>
+                    <td scope="col">{{ company['symbol'] }}</td>
+                    <td scope="col">{{ company['shares'] }}</td>
+                    <td scope="col">{{ company['price'] | usd }}</td>
+                    <td scope="col">{{ company['holding'] | usd }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Final balance and total at the bottom of table -->
+        <tr>
+            <th colspan="4">Current Balance</th>
+            <td>{{ cash | usd }}</td>
+        </tr>
+
+        <tr>
+            <th colspan="4">Total Balance</th>
+            <td>{{ total_balance | usd }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+{% endblock %}
